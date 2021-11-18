@@ -1,9 +1,13 @@
 name: Continuous I/D
 
 # Activa el flujo cuando se hace pull o push a la rama principal
-on: [push, pull_request]
-  branches:
-    - main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 # Acciones a realizar cuando se activa el flujo
 jobs:
