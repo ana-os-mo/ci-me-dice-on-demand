@@ -40,10 +40,12 @@ jobs:
     
     - name: pass test message
       if: success()
-      run: echo "test pass"
+      run: |
+        echo "test pass"
     
     - name: fail test message
       if: failure()
-      run: echo "test fail"
+      run: |
+        echo "test fail"
 
 
