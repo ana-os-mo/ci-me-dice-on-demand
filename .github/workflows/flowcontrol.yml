@@ -1,13 +1,9 @@
 name: Continuous I/D
 
 # Activa el flujo cuando se hace pull o push a la rama principal
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
+  branches:
+    - main
 
 # Acciones a realizar cuando se activa el flujo
 jobs:
@@ -39,13 +35,11 @@ jobs:
         python3 -m pytest -v tests/test_dice.py
     
     - name: pass test message
+      run: echo "test pass"
       if: success()
-      run: |
-        echo "test pass"
     
     - name: fail test message
+      run: echo "test fail"
       if: failure()
-      run: |
-        echo "test fail"
 
 
