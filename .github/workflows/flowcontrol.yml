@@ -34,12 +34,12 @@ jobs:
         source venv/bin/activate
         python3 -m pytest -v tests/test_dice.py
     
-    - name: pass test message
-      run: echo "test pass"
-      if: success()
+#     - name: pass test message
+#       run: echo "test pass"
+#       if: success()
     
-    - name: fail test message
-      run: echo "test fail"
-      if: failure()
+#     - name: fail test message
+#       run: echo "test fail"
+#       if: failure()
 
 
