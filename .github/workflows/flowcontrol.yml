@@ -1,0 +1,49 @@
+name: Continuous I/D
+
+# Activa el flujo cuando se hace pull o push a la rama principal
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Acciones a realizar cuando se activa el flujo
+jobs:
+
+  build:
+
+    name: build and test
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Check out repository code
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    
+    - name: Install dependencies
+      uses: py-actions/py-dependency-install@v2
+      with:
+        path: "./requirements.txt"
+
+    - name: Run unit test
+      run: |
+        python3 -m venv venv
+        source venv/bin/activate
+        python3 -m pytest -v tests/test_dice.py
+    
+    - name: pass test message
+      if: success()
+      run: echo "test pass"
+    
+    - name: fail test message
+      if: failure()
+      run: echo "test fail"
+
+
